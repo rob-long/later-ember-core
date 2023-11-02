@@ -1,0 +1,32 @@
+<div class={{if @className @className "cVL--badge"}}>
+  {{#if (has-block "title")}}
+    {{yield to="title"}}
+  {{else}}
+    {{svg-jar
+      "alpha-label"
+      class="cVL--badge__title is--alpha"
+      desc="Alpha label icon"
+      role="img"
+      title="Alpha Label"
+    }}
+    {{svg-jar
+      "beta-label"
+      class="cVL--badge__title is--beta"
+      desc="Beta label icon"
+      role="img"
+      title="Beta Label"
+    }}
+  {{/if}}
+
+  {{#if (has-block "body")}}
+    <p class="cVL--badge__desc">
+      {{yield to="body"}}
+    </p>
+  {{else if @href}}
+    <Shared::Link
+      @href={{@href}}
+      @text={{if @linkText @linkText (t "shared_phrases.learn_more")}}
+      class="cVL--badge__link"
+    />
+  {{/if}}
+</div>
